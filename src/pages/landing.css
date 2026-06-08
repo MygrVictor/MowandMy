@@ -1,0 +1,33 @@
+body,
+html,
+#root {
+  height: 100%;
+}
+.landing-root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #fff7f1 0%, #fffdfa 100%);
+}
+.logo-wrap {
+  margin-bottom: 2rem;
+}
+.landing-logo {
+  width: 360px;
+  max-width: 80%;
+  filter: drop-shadow(0 6px 18px rgba(138, 73, 41, 0.18));
+}
+.enter-button {
+  margin-top: 12px;
+  font-size: 1.1rem;
+  padding: 12px 24px;
+  border-radius: 999px;
+  background: #c86a2f;
+  color: white;
+  border: none;
+}
+.enter-button:hover {
+  transform: translateY(-1px);
+}

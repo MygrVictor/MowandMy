@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Raleway:wght@300;400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Palette : vert sauge, terracotta, blanc cassé */
+    --color-sage: #9caa8e;
+    --color-sage-dark: #7a8c6c;
+    --color-terracotta: #c27a45;
+    --color-terracotta-dark: #a86835;
+    --color-cream: #faf8f4;
+    --color-warm-white: #f5f2eb;
+    --color-text: #3d3d3d;
+    --color-text-light: #6b6b6b;
+  }
+
+  body {
+    font-family: "Raleway", sans-serif;
+    @apply bg-[#faf8f4] text-[#3d3d3d];
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Cormorant Garamond", serif;
+    @apply font-semibold;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+  h3 {
+    @apply text-xl md:text-2xl;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-gradient-to-r from-[#9caa8e] to-[#8a9d7a] text-white font-semibold text-sm rounded-full
+      hover:shadow-lg hover:shadow-[#9caa8e]/25 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]
+      transition-all duration-300 ease-out;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-gradient-to-r from-[#BD6525] to-[#d4844e] text-white font-semibold text-sm rounded-full
+      hover:shadow-lg hover:shadow-[#BD6525]/25 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]
+      transition-all duration-300 ease-out;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white/90 backdrop-blur-sm text-[#BD6525] font-semibold text-sm rounded-full border border-[#BD6525]/20
+      hover:bg-white hover:shadow-lg hover:shadow-black/5 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]
+      transition-all duration-300 ease-out;
+  }
+
+  .section-container {
+    @apply max-w-6xl mx-auto px-6 py-20;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 ease-out;
+  }
+
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Modern selection */
+  ::selection {
+    background: rgba(189, 101, 37, 0.15);
+    color: #bd6525;
+  }
+}
