@@ -70,7 +70,7 @@ export default function Nav() {
           <a
             href="tel:+33240000000"
             style={{ color: navColor }}
-            className="hidden md:flex items-center gap-2 ml-auto px-5 py-2.5 bg-white text-sm font-semibold rounded-full hover:shadow-lg hover:shadow-black/10 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300"
+            className="hidden md:inline-flex ml-auto btn-reserve"
           >
             <PhoneIcon className="w-4 h-4" />
             Réserver
@@ -127,7 +127,7 @@ export default function Nav() {
             <a
               href="tel:+33240000000"
               style={{ color: navColor }}
-              className="flex items-center justify-center gap-2 mt-2 px-5 py-2.5 bg-white text-sm font-semibold rounded-full"
+              className="mt-2 btn-reserve"
             >
               <PhoneIcon className="w-4 h-4" />
               Réserver

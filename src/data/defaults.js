@@ -40,17 +40,22 @@ export const DEFAULT_MENU = [
 export const DEFAULT_BRUNCH = [
   {
     id: 101,
-    name: "Brunch complet",
-    desc: "Boissons chaudes, viennoiseries, oeufs, pancakes, fruits",
-    price: "28€",
+    name: "Pancakes maison",
+    desc: "Pancakes moelleux, fruits frais de saison et sirop d'érable",
+    price: "12€",
   },
   {
     id: 102,
-    name: "Brunch végétal",
-    desc: "Version 100% végétale",
-    price: "26€",
+    name: "Toast saumon gravlax",
+    desc: "Pain au levain, cream cheese aux herbes, saumon gravlax et pickles",
+    price: "15€",
   },
-  { id: 103, name: "Brunch enfant", desc: "Portion adaptée", price: "14€" },
+  {
+    id: 103,
+    name: "Assiette brunch végétale",
+    desc: "Houmous maison, légumes rôtis, avocat, salade croquante et focaccia",
+    price: "14€",
+  },
 ];
 
 export const DEFAULT_AVIS = [

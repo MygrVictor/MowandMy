@@ -36,7 +36,7 @@ export default function MenuEditor({ menu, setMenu, brunch, setBrunch }) {
   // Ajouter un brunch
   function addBrunchItem(e) {
     e.preventDefault();
-    if (!newBrunch.name || !newBrunch.price) return;
+    if (!newBrunch.name) return;
     const item = { ...newBrunch, id: Date.now() };
     const next = [...brunch, item];
     setBrunch(next);
@@ -187,7 +187,7 @@ export default function MenuEditor({ menu, setMenu, brunch, setBrunch }) {
           className="mb-6 p-4 bg-[#f5f2eb] rounded-xl"
         >
           <p className="text-sm font-medium text-[#3d3d3d] mb-3">
-            Ajouter une formule brunch
+            Ajouter un plat brunch
           </p>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
             <input
@@ -195,7 +195,7 @@ export default function MenuEditor({ menu, setMenu, brunch, setBrunch }) {
               onChange={(e) =>
                 setNewBrunch({ ...newBrunch, name: e.target.value })
               }
-              placeholder="Nom de la formule"
+              placeholder="Nom du plat brunch"
               className="px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-[#9caa8e]"
             />
             <input
@@ -203,7 +203,7 @@ export default function MenuEditor({ menu, setMenu, brunch, setBrunch }) {
               onChange={(e) =>
                 setNewBrunch({ ...newBrunch, desc: e.target.value })
               }
-              placeholder="Description"
+              placeholder="Description du plat"
               className="px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-[#9caa8e]"
             />
             <input
@@ -211,7 +211,7 @@ export default function MenuEditor({ menu, setMenu, brunch, setBrunch }) {
               onChange={(e) =>
                 setNewBrunch({ ...newBrunch, price: e.target.value })
               }
-              placeholder="Prix (ex: 28€)"
+              placeholder="Prix (optionnel)"
               className="px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-[#9caa8e]"
             />
             <button
@@ -225,9 +225,7 @@ export default function MenuEditor({ menu, setMenu, brunch, setBrunch }) {
 
         {/* Liste des brunchs */}
         {brunch.length === 0 ? (
-          <p className="text-[#6b6b6b] text-sm italic">
-            Aucune formule brunch.
-          </p>
+          <p className="text-[#6b6b6b] text-sm italic">Aucun plat brunch.</p>
         ) : (
           <ul className="space-y-3">
             {brunch.map((item) => (

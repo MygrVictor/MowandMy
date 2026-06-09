@@ -4,6 +4,7 @@ import ReviewCarousel from "../components/ReviewCarousel";
 import { useState } from "react";
 import { PhoneIcon } from "../components/Icons";
 import { DEFAULT_MENU, DEFAULT_BRUNCH } from "../data/defaults";
+import ScrollReveal from "../components/ScrollReveal";
 
 export default function Restaurant() {
   const [hours] = useState(() => {
@@ -26,7 +27,7 @@ export default function Restaurant() {
       {/* Hero style Home - texte à gauche, image à droite */}
       <section className="relative py-20 px-6 bg-[#ececd9] overflow-hidden">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <ScrollReveal className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-[#73754f] uppercase tracking-[0.2em] text-sm mb-3">
                 Cuisine fait maison
@@ -52,14 +53,14 @@ export default function Restaurant() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       <section className="py-20 px-6 bg-[#fcfcf7]">
         <div className="max-w-4xl mx-auto">
           {/* En-tête carte */}
-          <div className="text-center mb-16">
+          <ScrollReveal className="text-center mb-16">
             <div className="inline-block mb-6">
               <svg
                 className="w-12 h-12 text-[#85875C] mx-auto"
@@ -80,10 +81,10 @@ export default function Restaurant() {
             </p>
             <h2 className="text-[#85875C] mb-4 font-serif">La Carte</h2>
             <div className="w-24 h-[1px] bg-[#85875C]/30 mx-auto"></div>
-          </div>
+          </ScrollReveal>
 
           {/* Menu style restaurant */}
-          <div className="bg-gradient-to-b from-[#f7f7ef] to-[#fcfcf7] rounded-3xl p-8 md:p-12 shadow-lg border border-[#dfdfca]">
+          <ScrollReveal className="bg-gradient-to-b from-[#f7f7ef] to-[#fcfcf7] rounded-3xl p-8 md:p-12 shadow-lg border border-[#dfdfca]">
             <div className="space-y-0">
               {menu.map((item, index) => (
                 <div key={item.id || item.name}>
@@ -129,44 +130,52 @@ export default function Restaurant() {
                 </span>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       <section className="py-16 px-6 bg-[#ececd9]">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
+          <ScrollReveal className="text-center mb-12">
             <p className="text-[#73754f] uppercase tracking-[0.2em] text-sm mb-3">
               Chaque dimanche
             </p>
             <h2 className="text-[#85875C] mb-4">Brunch</h2>
             <p className="text-[#6b6b6b]">
-              Tous les dimanches de 10h à 15h. Réservation conseillée.
+              Tous les dimanches de 10h à 15h. Découvrez nos plats spécifiques
+              du brunch, selon l'inspiration du moment.
             </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {brunch.map((item) => (
-              <div
+          </ScrollReveal>
+          <div className="grid md:grid-cols-2 gap-6">
+            {brunch.map((item, index) => (
+              <ScrollReveal
                 key={item.id || item.name}
-                className="bg-[#fcfcf7] rounded-xl p-6 text-center hover:shadow-md transition"
+                className="bg-[#fcfcf7] rounded-xl p-6 hover:shadow-md transition border border-[#dfdfca]"
+                delay={index * 100}
               >
-                <h3 className="text-lg font-semibold text-[#85875C] mb-3">
-                  {item.name}
-                </h3>
-                <p className="text-sm text-[#6b6b6b] mb-4">{item.desc}</p>
-                <span className="text-2xl font-serif text-[#85875C]">
-                  {item.price}
-                </span>
-              </div>
+                <div className="flex items-start justify-between gap-4 mb-3">
+                  <h3 className="text-lg font-semibold text-[#85875C]">
+                    {item.name}
+                  </h3>
+                  {item.price && (
+                    <span className="text-xl font-serif text-[#85875C] whitespace-nowrap">
+                      {item.price}
+                    </span>
+                  )}
+                </div>
+                <p className="text-sm text-[#6b6b6b]">{item.desc}</p>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
-      <ReviewCarousel />
+      <ScrollReveal>
+        <ReviewCarousel />
+      </ScrollReveal>
 
       <section className="py-16 px-6 bg-[#85875C]">
-        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <ScrollReveal className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div className="text-white">
             <h2 className="text-white mb-6">Horaires</h2>
             {hours ? (
@@ -189,15 +198,12 @@ export default function Restaurant() {
           <div className="text-center">
             <h3 className="text-white text-2xl mb-4">Réserver une table</h3>
             <p className="text-white/80 mb-6">Appelez-nous pour réserver !</p>
-            <a
-              href="tel:+33240000000"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-white/95 backdrop-blur-sm text-[#85875C] font-semibold rounded-full border border-white/50 hover:bg-white hover:shadow-xl hover:shadow-black/10 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300"
-            >
+            <a href="tel:+33240000000" className="btn-reserve">
               <PhoneIcon className="w-5 h-5" />
               02 40 XX XX XX
             </a>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       <Footer />

@@ -83,6 +83,7 @@ export default function Workshops() {
   });
 
   const [selectedDateKey, setSelectedDateKey] = useState("");
+  const [selectedWorkshopId, setSelectedWorkshopId] = useState("");
 
   const workshopsByDate = useMemo(() => {
     const map = {};
@@ -103,6 +104,38 @@ export default function Workshops() {
   const selectedItems = selectedDateKey
     ? workshopsByDate[selectedDateKey]
     : null;
+
+  const displayedSelectedItems = useMemo(() => {
+    if (!selectedItems?.length) return [];
+    if (!selectedWorkshopId) return selectedItems;
+
+    const selectedWorkshop = selectedItems.find(
+      (item) => item.id === selectedWorkshopId,
+    );
+
+    return selectedWorkshop ? [selectedWorkshop] : selectedItems;
+  }, [selectedItems, selectedWorkshopId]);
+
+  const selectedWorkshop = displayedSelectedItems[0] || null;
+
+  function openWorkshopDetails(workshop) {
+    const dateKey = getDateKey(workshop?.date);
+    if (!dateKey) return;
+
+    setSelectedDateKey(dateKey);
+    setSelectedWorkshopId(workshop.id);
+  }
+
+  function openDateDetails(dateKey) {
+    if (!dateKey) return;
+    setSelectedDateKey(dateKey);
+    setSelectedWorkshopId("");
+  }
+
+  function closeWorkshopDetails() {
+    setSelectedDateKey("");
+    setSelectedWorkshopId("");
+  }
 
   function changeMonth(delta) {
     setCurrentMonth(
@@ -238,9 +271,7 @@ export default function Workshops() {
                       <button
                         key={dateKey}
                         type="button"
-                        onClick={() =>
-                          hasWorkshop && setSelectedDateKey(dateKey)
-                        }
+                        onClick={() => hasWorkshop && openDateDetails(dateKey)}
                         className={`relative h-11 sm:h-12 rounded-xl border text-sm transition ${
                           hasWorkshop
                             ? "bg-white text-[#6b6b6b] border-[#ddd6c8] hover:bg-[#faf8f4]"
@@ -267,16 +298,22 @@ export default function Workshops() {
                 <h3 className="text-[#3d3d3d] text-2xl mb-4">À venir</h3>
                 <ul className="space-y-3">
                   {upcomingWorkshops.slice(0, 5).map((w) => (
-                    <li
-                      key={w.id}
-                      className="bg-[#faf8f4] border border-[#ece6da] rounded-xl p-3"
-                    >
-                      <p className="text-[#3d3d3d] font-medium leading-tight">
-                        {w.title}
-                      </p>
-                      <p className="text-xs text-[#8b8b8b] mt-1 capitalize">
-                        {formatDateFr(w.date)}
-                      </p>
+                    <li key={w.id}>
+                      <button
+                        type="button"
+                        onClick={() => openWorkshopDetails(w)}
+                        className="w-full text-left bg-[#faf8f4] border border-[#ece6da] rounded-xl p-3 transition hover:border-[#cd9a18] hover:bg-white hover:shadow-sm"
+                      >
+                        <p className="text-[#3d3d3d] font-medium leading-tight">
+                          {w.title}
+                        </p>
+                        <p className="text-xs text-[#8b8b8b] mt-1 capitalize">
+                          {formatDateFr(w.date)}
+                        </p>
+                        <p className="text-xs font-medium text-[#8c690f] mt-2">
+                          Voir la description et réserver
+                        </p>
+                      </button>
                     </li>
                   ))}
                 </ul>
@@ -286,12 +323,12 @@ export default function Workshops() {
         </div>
       </section>
 
-      {selectedItems && selectedItems.length > 0 && (
+      {selectedWorkshop && (
         <div className="fixed inset-0 z-50 bg-black/45 backdrop-blur-[1px] px-4 flex items-center justify-center">
           <div className="w-full max-w-lg bg-white border border-[#e7e2d7] rounded-3xl shadow-2xl p-6 sm:p-7 relative">
             <button
               type="button"
-              onClick={() => setSelectedDateKey("")}
+              onClick={closeWorkshopDetails}
               className="absolute top-4 right-4 w-8 h-8 rounded-full border border-[#e2dccf] text-[#6b6b6b] bg-white hover:text-[#8c690f]"
               aria-label="Fermer"
             >
@@ -299,14 +336,16 @@ export default function Workshops() {
             </button>
 
             <p className="text-[#9caa8e] uppercase tracking-[0.2em] text-xs mb-2">
-              Atelier sélectionné
+              {displayedSelectedItems.length > 1
+                ? "Ateliers sélectionnés"
+                : "Atelier sélectionné"}
             </p>
             <p className="text-[#3d3d3d] font-semibold capitalize mb-5">
-              {formatDateFr(selectedItems[0].date)}
+              {formatDateFr(selectedWorkshop.date)}
             </p>
 
             <div className="space-y-5 max-h-[60vh] overflow-y-auto pr-1">
-              {selectedItems.map((item) => {
+              {displayedSelectedItems.map((item) => {
                 const phoneDisplay =
                   item.reservationPhone || DEFAULT_RESERVATION_DISPLAY;
 
