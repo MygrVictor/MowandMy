@@ -38,6 +38,26 @@ Notes:
 - Remplacez le stockage local par une API si vous souhaitez persistance serveur.
 - Ajoutez les images du logo dans `src/assets` pour remplacer le texte.
 
+### Avis clients (version gratuite)
+
+Le carrousel lit automatiquement le fichier `public/avis.json` et affiche les **3 avis les plus récents** (champ `date`).
+
+Format attendu:
+
+```json
+[
+  {
+    "id": "g-001",
+    "nom": "Prénom N.",
+    "texte": "Votre avis",
+    "note": 5,
+    "date": "2026-06-14"
+  }
+]
+```
+
+Si le fichier est absent/invalide, le site retombe automatiquement sur les avis en local.
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

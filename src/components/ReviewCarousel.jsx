@@ -1,19 +1,82 @@
 import { useState, useEffect } from "react";
-import { DEFAULT_AVIS } from "../data/defaults";
 
-function loadAvis() {
+function normalizeAvis(item, index) {
+  if (!item || typeof item !== "object") return null;
+
+  const nom = typeof item.nom === "string" ? item.nom.trim() : "";
+  const texte = typeof item.texte === "string" ? item.texte.trim() : "";
+  const note = Number(item.note);
+
+  if (!nom || !texte || Number.isNaN(note)) return null;
+
+  return {
+    id: item.id || `avis-${index}`,
+    nom,
+    texte,
+    note: Math.max(1, Math.min(5, Math.round(note))),
+    date: item.date || null,
+  };
+}
+
+function getLatestThree(list) {
+  const normalized = (Array.isArray(list) ? list : [])
+    .map(normalizeAvis)
+    .filter(Boolean);
+
+  return normalized
+    .sort((a, b) => {
+      const aTime = a.date ? Date.parse(a.date) : Number.NEGATIVE_INFINITY;
+      const bTime = b.date ? Date.parse(b.date) : Number.NEGATIVE_INFINITY;
+      return bTime - aTime;
+    })
+    .slice(0, 3);
+}
+
+function loadAvisFromStorage() {
   const rawAvis = localStorage.getItem("avis");
-  return rawAvis ? JSON.parse(rawAvis) : DEFAULT_AVIS;
+  if (!rawAvis) return [];
+
+  try {
+    return getLatestThree(JSON.parse(rawAvis));
+  } catch {
+    return [];
+  }
 }
 
 export default function ReviewCarousel() {
-  const [avis] = useState(loadAvis);
+  const [avis, setAvis] = useState(loadAvisFromStorage);
   const [currentAvis, setCurrentAvis] = useState(0);
+  const safeCurrentAvis = avis.length ? currentAvis % avis.length : 0;
 
   useEffect(() => {
+    if (avis.length) return undefined;
+
+    let cancelled = false;
+
+    fetch("/avis.json", { cache: "no-store" })
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (cancelled || !data) return;
+        const latestThree = getLatestThree(data);
+        setAvis(latestThree);
+        localStorage.setItem("avis", JSON.stringify(latestThree));
+      })
+      .catch(() => {
+        // fallback silencieux si le fichier seed n'est pas disponible
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [avis.length]);
+
+  useEffect(() => {
+    if (avis.length <= 1) return undefined;
+
     const interval = setInterval(() => {
       setCurrentAvis((prev) => (prev + 1) % avis.length);
     }, 5000);
+
     return () => clearInterval(interval);
   }, [avis.length]);
 
@@ -21,12 +84,17 @@ export default function ReviewCarousel() {
     <section className="py-16 px-6 bg-white">
       <div className="max-w-3xl mx-auto text-center">
         <h2 className="text-[#BD6525] mb-12">Ce que nos clients disent</h2>
+        {!avis.length && (
+          <p className="text-[#6b6b6b]">
+            Aucun avis disponible pour le moment.
+          </p>
+        )}
         <div className="relative h-48 overflow-hidden">
           {avis.map((a, index) => (
             <div
               key={a.id}
               className={`absolute inset-0 transition-all duration-700 ${
-                index === currentAvis
+                index === safeCurrentAvis
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8"
               }`}
@@ -66,7 +134,7 @@ export default function ReviewCarousel() {
               onClick={() => setCurrentAvis(index)}
               aria-label={`Voir avis ${index + 1}`}
               className={`w-2 h-2 rounded-full transition ${
-                index === currentAvis ? "bg-[#BD6525]" : "bg-gray-300"
+                index === safeCurrentAvis ? "bg-[#BD6525]" : "bg-gray-300"
               }`}
             />
           ))}

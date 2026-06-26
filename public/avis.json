@@ -1,0 +1,30 @@
+[
+  {
+    "id": "g-001",
+    "nom": "Camille R.",
+    "texte": "Cuisine fraîche, accueil au top et super ambiance. On a adoré.",
+    "note": 5,
+    "date": "2026-06-14"
+  },
+  {
+    "id": "g-002",
+    "nom": "Julien M.",
+    "texte": "Le brunch est excellent et très copieux. Service souriant.",
+    "note": 5,
+    "date": "2026-06-10"
+  },
+  {
+    "id": "g-003",
+    "nom": "Anaïs P.",
+    "texte": "Lieu chaleureux, plats maison et produits de qualité.",
+    "note": 5,
+    "date": "2026-06-03"
+  },
+  {
+    "id": "g-004",
+    "nom": "Nicolas D.",
+    "texte": "Très bonne adresse à Pornic, on reviendra.",
+    "note": 4,
+    "date": "2026-05-28"
+  }
+]

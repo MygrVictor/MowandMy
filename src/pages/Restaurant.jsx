@@ -6,6 +6,15 @@ import { PhoneIcon } from "../components/Icons";
 import { DEFAULT_MENU, DEFAULT_BRUNCH } from "../data/defaults";
 import ScrollReveal from "../components/ScrollReveal";
 
+const RESTO_BANDEAU_PHOTOS = [
+  "/vos_photos1.jpg",
+  "/vos_photos2.jpg",
+  "/vos_photos3.jpg",
+  "/vos_photos4.jpg",
+  "/vos_photos5.jpg",
+  "/vos_photos6.jpg",
+];
+
 export default function Restaurant() {
   const [hours] = useState(() => {
     const rawHours = localStorage.getItem("openingHours");
@@ -19,6 +28,42 @@ export default function Restaurant() {
     const savedBrunch = localStorage.getItem("restaurantBrunch");
     return savedBrunch ? JSON.parse(savedBrunch) : DEFAULT_BRUNCH;
   });
+
+  function getBrunchCategory(item) {
+    if (item.category === "sucre" || item.category === "sale") {
+      return item.category;
+    }
+
+    const text = `${item.name || ""} ${item.desc || ""}`.toLowerCase();
+    const sweetKeywords = [
+      "pancake",
+      "sucré",
+      "sucree",
+      "chocolat",
+      "sirop",
+      "gaufre",
+      "brioche",
+      "granola",
+      "fruit",
+      "confiture",
+      "miel",
+      "nutella",
+      "cookie",
+      "cake",
+      "tarte",
+    ];
+
+    return sweetKeywords.some((keyword) => text.includes(keyword))
+      ? "sucre"
+      : "sale";
+  }
+
+  const brunchSucre = brunch.filter(
+    (item) => getBrunchCategory(item) === "sucre",
+  );
+  const brunchSale = brunch.filter(
+    (item) => getBrunchCategory(item) === "sale",
+  );
 
   return (
     <div className="min-h-screen bg-[#f7f7ef]">
@@ -55,6 +100,34 @@ export default function Restaurant() {
             </div>
           </ScrollReveal>
         </div>
+      </section>
+
+      <section className="py-8 bg-[#f1f1e6] border-y border-[#d9d9c4] overflow-hidden">
+        <ScrollReveal className="max-w-6xl mx-auto px-2 md:px-6">
+          <p className="text-center text-[#73754f] uppercase tracking-[0.22em] text-xs mb-4">
+            Vos photos du restaurant
+          </p>
+
+          <div className="restaurant-marquee-mask rounded-2xl">
+            <div className="restaurant-marquee-track">
+              {[...RESTO_BANDEAU_PHOTOS, ...RESTO_BANDEAU_PHOTOS].map(
+                (src, index) => (
+                  <figure
+                    key={`${src}-${index}`}
+                    className="restaurant-marquee-item"
+                  >
+                    <img
+                      src={src}
+                      alt={`Photo restaurant ${((index % 6) + 1).toString()}`}
+                      loading="lazy"
+                      className="w-full h-full object-cover"
+                    />
+                  </figure>
+                ),
+              )}
+            </div>
+          </div>
+        </ScrollReveal>
       </section>
 
       <section className="py-20 px-6 bg-[#fcfcf7]">
@@ -147,25 +220,72 @@ export default function Restaurant() {
             </p>
           </ScrollReveal>
           <div className="grid md:grid-cols-2 gap-6">
-            {brunch.map((item, index) => (
-              <ScrollReveal
-                key={item.id || item.name}
-                className="bg-[#fcfcf7] rounded-xl p-6 hover:shadow-md transition border border-[#dfdfca]"
-                delay={index * 100}
-              >
-                <div className="flex items-start justify-between gap-4 mb-3">
-                  <h3 className="text-lg font-semibold text-[#85875C]">
-                    {item.name}
-                  </h3>
-                  {item.price && (
-                    <span className="text-xl font-serif text-[#85875C] whitespace-nowrap">
-                      {item.price}
-                    </span>
-                  )}
-                </div>
-                <p className="text-sm text-[#6b6b6b]">{item.desc}</p>
-              </ScrollReveal>
-            ))}
+            <ScrollReveal className="bg-[#fcfcf7] rounded-xl p-6 border border-[#dfdfca]">
+              <h3 className="text-xl font-semibold text-[#85875C] mb-4">
+                Sucré
+              </h3>
+              <div className="space-y-4">
+                {brunchSucre.length === 0 ? (
+                  <p className="text-sm text-[#6b6b6b] italic">
+                    Aucune proposition sucrée pour le moment.
+                  </p>
+                ) : (
+                  brunchSucre.map((item) => (
+                    <div
+                      key={item.id || item.name}
+                      className="pb-4 border-b border-[#dfdfca] last:border-b-0 last:pb-0"
+                    >
+                      <div className="flex items-start justify-between gap-4 mb-2">
+                        <h4 className="text-lg font-semibold text-[#85875C]">
+                          {item.name}
+                        </h4>
+                        {item.price && (
+                          <span className="text-xl font-serif text-[#85875C] whitespace-nowrap">
+                            {item.price}
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-sm text-[#6b6b6b]">{item.desc}</p>
+                    </div>
+                  ))
+                )}
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal
+              className="bg-[#fcfcf7] rounded-xl p-6 border border-[#dfdfca]"
+              delay={100}
+            >
+              <h3 className="text-xl font-semibold text-[#85875C] mb-4">
+                Salé
+              </h3>
+              <div className="space-y-4">
+                {brunchSale.length === 0 ? (
+                  <p className="text-sm text-[#6b6b6b] italic">
+                    Aucune proposition salée pour le moment.
+                  </p>
+                ) : (
+                  brunchSale.map((item) => (
+                    <div
+                      key={item.id || item.name}
+                      className="pb-4 border-b border-[#dfdfca] last:border-b-0 last:pb-0"
+                    >
+                      <div className="flex items-start justify-between gap-4 mb-2">
+                        <h4 className="text-lg font-semibold text-[#85875C]">
+                          {item.name}
+                        </h4>
+                        {item.price && (
+                          <span className="text-xl font-serif text-[#85875C] whitespace-nowrap">
+                            {item.price}
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-sm text-[#6b6b6b]">{item.desc}</p>
+                    </div>
+                  ))
+                )}
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -198,9 +318,9 @@ export default function Restaurant() {
           <div className="text-center">
             <h3 className="text-white text-2xl mb-4">Réserver une table</h3>
             <p className="text-white/80 mb-6">Appelez-nous pour réserver !</p>
-            <a href="tel:+33240000000" className="btn-reserve">
+            <a href="tel:+33984674099" className="btn-reserve">
               <PhoneIcon className="w-5 h-5" />
-              02 40 XX XX XX
+              09 84 67 40 99
             </a>
           </div>
         </ScrollReveal>

@@ -48,7 +48,7 @@ export default function WorkshopForm({ onAdd }) {
         />
         <input
           type="tel"
-          placeholder="Numéro de réservation (ex: 02 40 XX XX XX)"
+          placeholder="Numéro de réservation (ex: 09 84 67 40 99)"
           value={reservationPhone}
           onChange={(e) => setReservationPhone(e.target.value)}
           className="w-full px-4 py-3 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-[#9caa8e] transition"

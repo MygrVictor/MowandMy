@@ -47,7 +47,37 @@ export default function Footer() {
         </div>
       </div>
       <div className="max-w-5xl mx-auto mt-8 pt-6 border-t border-[#BD6525]/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#9caa8e]">
-        <p>© {new Date().getFullYear()} Mow & My — Tous droits réservés</p>
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 text-center sm:text-left">
+          <p>© {new Date().getFullYear()} Mow & My — Tous droits réservés</p>
+          <span className="inline-flex items-center justify-center gap-1 text-[11px]">
+            <svg
+              className="w-3.5 h-3.5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h10"
+              />
+            </svg>
+            <span>Conception web : HVC agency</span>
+          </span>
+          <a
+            href="https://www.instagram.com/anaisaup_photographie/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Voir le compte Instagram de la photographe"
+            className="inline-flex items-center justify-center gap-1 text-[11px] hover:text-[#BD6525] transition"
+          >
+            <span>Photo :</span>
+            <InstagramIcon className="w-3.5 h-3.5" />
+            <span>anaisaup_photographie</span>
+          </a>
+        </div>
         <div className="flex items-center gap-4">
           <Link to="/admin" className="hover:text-[#BD6525] transition">
             Espace pro

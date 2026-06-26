@@ -12,8 +12,8 @@ const NAV_LINKS = [
 
 const NAV_THEME_BY_PATH = {
   "/restaurant": "#85875C",
-  "/coffee": "#8EC5B8",
-  "/coworking": "#9caa8e",
+  "/coffee": "#d4a574",
+  "/coworking": "#bb6f58",
   "/ateliers": "#cd9a18",
   "/home": "#BD6525",
   "/mentions-legales": "#BD6525",
@@ -68,7 +68,7 @@ export default function Nav() {
 
           {/* CTA Desktop */}
           <a
-            href="tel:+33240000000"
+            href="tel:+33984674099"
             style={{ color: navColor }}
             className="hidden md:inline-flex ml-auto btn-reserve"
           >
@@ -125,7 +125,7 @@ export default function Nav() {
               </Link>
             ))}
             <a
-              href="tel:+33240000000"
+              href="tel:+33984674099"
               style={{ color: navColor }}
               className="mt-2 btn-reserve"
             >

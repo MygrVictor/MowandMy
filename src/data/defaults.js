@@ -40,50 +40,23 @@ export const DEFAULT_MENU = [
 export const DEFAULT_BRUNCH = [
   {
     id: 101,
+    category: "sucre",
     name: "Pancakes maison",
     desc: "Pancakes moelleux, fruits frais de saison et sirop d'érable",
     price: "12€",
   },
   {
     id: 102,
+    category: "sale",
     name: "Toast saumon gravlax",
     desc: "Pain au levain, cream cheese aux herbes, saumon gravlax et pickles",
     price: "15€",
   },
   {
     id: 103,
+    category: "sale",
     name: "Assiette brunch végétale",
     desc: "Houmous maison, légumes rôtis, avocat, salade croquante et focaccia",
     price: "14€",
-  },
-];
-
-export const DEFAULT_AVIS = [
-  {
-    id: 1,
-    nom: "Marie L.",
-    texte:
-      "Un vrai coup de coeur ! Les plats sont délicieux et l'ambiance est parfaite.",
-    note: 5,
-  },
-  {
-    id: 2,
-    nom: "Thomas B.",
-    texte:
-      "Brunch du dimanche incontournable à Pornic. On y retourne chaque semaine.",
-    note: 5,
-  },
-  {
-    id: 3,
-    nom: "Sophie M.",
-    texte: "Cuisine saine et savoureuse, personnel adorable. Je recommande !",
-    note: 5,
-  },
-  {
-    id: 4,
-    nom: "Pierre D.",
-    texte:
-      "Enfin un endroit où bien manger à Pornic. Les produits sont frais et locaux.",
-    note: 4,
   },
 ];

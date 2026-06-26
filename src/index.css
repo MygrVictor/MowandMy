@@ -228,6 +228,64 @@
     animation: curtainLift 900ms cubic-bezier(0.2, 0.82, 0.2, 1) forwards;
   }
 
+  @keyframes restaurantMarquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .restaurant-marquee-mask {
+    position: relative;
+    overflow: hidden;
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      black 6%,
+      black 94%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      black 6%,
+      black 94%,
+      transparent 100%
+    );
+  }
+
+  .restaurant-marquee-track {
+    display: flex;
+    gap: 14px;
+    width: max-content;
+    animation: restaurantMarquee 26s linear infinite;
+    will-change: transform;
+  }
+
+  .restaurant-marquee-mask:hover .restaurant-marquee-track {
+    animation-play-state: paused;
+  }
+
+  .restaurant-marquee-item {
+    width: 220px;
+    height: 120px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(133, 135, 92, 0.25);
+    box-shadow: 0 8px 20px rgba(55, 55, 38, 0.12);
+    flex: 0 0 auto;
+    background: #f9f9f1;
+  }
+
+  @media (max-width: 768px) {
+    .restaurant-marquee-item {
+      width: 170px;
+      height: 96px;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
@@ -248,6 +306,10 @@
     .btn-reserve:active {
       transform: none;
       transition: none;
+    }
+
+    .restaurant-marquee-track {
+      animation: none;
     }
   }
 }

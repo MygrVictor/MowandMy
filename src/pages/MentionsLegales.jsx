@@ -18,10 +18,10 @@ export default function MentionsLegales() {
             <br />
             Téléphone :{" "}
             <a
-              href="tel:+33240000000"
+              href="tel:+33984674099"
               className="text-[#BD6525] hover:underline"
             >
-              02 40 00 00 00
+              09 84 67 40 99
             </a>
           </p>
 

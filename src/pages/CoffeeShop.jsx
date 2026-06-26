@@ -4,18 +4,18 @@ import ScrollReveal from "../components/ScrollReveal";
 
 export default function CoffeeShop() {
   return (
-    <div className="min-h-screen bg-[#eef8f5]">
+    <div className="min-h-screen bg-[#faf8f4]">
       <Nav />
 
       {/* Hero style Home - texte à gauche, image à droite */}
-      <section className="relative py-20 px-6 bg-[#dff1ec] overflow-hidden">
+      <section className="relative py-20 px-6 bg-[#f5f1e8] overflow-hidden">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <p className="text-[#5f9f91] uppercase tracking-[0.2em] text-sm mb-3">
+              <p className="text-[#c9a875] uppercase tracking-[0.2em] text-sm mb-3">
                 Salon de thé
               </p>
-              <h1 className="text-[#8EC5B8] mb-6">Coffee Shop</h1>
+              <h1 className="text-[#d4a574] mb-6">Coffee Shop</h1>
               <p className="text-lg text-[#6b6b6b] leading-relaxed mb-6">
                 Un moment de douceur dans votre journée. Installez-vous
                 confortablement et savourez nos boissons chaudes préparées avec
@@ -31,10 +31,10 @@ export default function CoffeeShop() {
 
             {/* Images superposées */}
             <div className="relative h-[500px]">
-              {/* Image principale - en arrière */}
-              <div className="absolute top-0 right-0 w-[75%] h-[70%] rounded-3xl overflow-hidden shadow-2xl">
+              {/* Image de droite - plus basse, en arrière */}
+              <div className="absolute bottom-0 right-0 w-[75%] h-[70%] rounded-3xl overflow-hidden shadow-2xl z-10">
                 <img
-                  src="calme2.jpg"
+                  src="calme3.jpg"
                   alt="Coffee Shop ambiance cosy"
                   loading="lazy"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
@@ -42,10 +42,10 @@ export default function CoffeeShop() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
               </div>
 
-              {/* Image secondaire - en avant, décalée */}
-              <div className="absolute bottom-0 left-0 w-[65%] h-[60%] rounded-3xl overflow-hidden shadow-2xl border-4 border-[#faf8f4]">
+              {/* Image de gauche - plus haute, en avant */}
+              <div className="absolute top-0 left-0 w-[65%] h-[60%] rounded-3xl overflow-hidden shadow-2xl border-4 border-[#faf8f4] z-20">
                 <img
-                  src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1200&q=80"
+                  src="coffee-shop.jpeg"
                   alt="Café latte art"
                   loading="lazy"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
@@ -58,19 +58,19 @@ export default function CoffeeShop() {
       </section>
 
       {/* Nos offres */}
-      <section className="py-20 px-6 bg-[#f4fcfa]">
+      <section className="py-20 px-6 bg-[#fffbf5]">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal className="text-center mb-16">
-            <p className="text-[#5f9f91] uppercase tracking-[0.2em] text-sm mb-3">
+            <p className="text-[#c9a875] uppercase tracking-[0.2em] text-sm mb-3">
               Ce qui vous attend
             </p>
-            <h2 className="text-[#8EC5B8] mb-4">Un espace cosy pour tous</h2>
+            <h2 className="text-[#d4a574] mb-4">Un espace cosy pour tous</h2>
           </ScrollReveal>
 
           <div className="grid md:grid-cols-3 gap-8">
             {/* Boissons chaudes */}
-            <ScrollReveal className="bg-[#eaf7f3] rounded-3xl p-8 text-center hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-              <div className="w-20 h-20 bg-[#8EC5B8] rounded-full flex items-center justify-center mx-auto mb-6">
+            <ScrollReveal className="bg-[#faf6ef] rounded-3xl p-8 text-center hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+              <div className="w-20 h-20 bg-[#d4a574] rounded-full flex items-center justify-center mx-auto mb-6">
                 <svg
                   className="w-10 h-10 text-white"
                   fill="none"
@@ -98,10 +98,10 @@ export default function CoffeeShop() {
 
             {/* Pâtisseries */}
             <ScrollReveal
-              className="bg-[#eaf7f3] rounded-3xl p-8 text-center hover:shadow-xl hover:-translate-y-1 transition-all duration-500"
+              className="bg-[#faf6ef] rounded-3xl p-8 text-center hover:shadow-xl hover:-translate-y-1 transition-all duration-500"
               delay={120}
             >
-              <div className="w-20 h-20 bg-[#8EC5B8] rounded-full flex items-center justify-center mx-auto mb-6">
+              <div className="w-20 h-20 bg-[#d4a574] rounded-full flex items-center justify-center mx-auto mb-6">
                 <svg
                   className="w-10 h-10 text-white"
                   fill="none"
@@ -129,10 +129,10 @@ export default function CoffeeShop() {
 
             {/* Jeux de société */}
             <ScrollReveal
-              className="bg-[#eaf7f3] rounded-3xl p-8 text-center hover:shadow-xl hover:-translate-y-1 transition-all duration-500"
+              className="bg-[#faf6ef] rounded-3xl p-8 text-center hover:shadow-xl hover:-translate-y-1 transition-all duration-500"
               delay={240}
             >
-              <div className="w-20 h-20 bg-[#8EC5B8] rounded-full flex items-center justify-center mx-auto mb-6">
+              <div className="w-20 h-20 bg-[#d4a574] rounded-full flex items-center justify-center mx-auto mb-6">
                 <svg
                   className="w-10 h-10 text-white"
                   fill="none"
@@ -162,7 +162,7 @@ export default function CoffeeShop() {
       </section>
 
       {/* Section Jeux avec image */}
-      <section className="py-20 px-6 bg-[#dff1ec]">
+      <section className="py-20 px-6 bg-[#f5f1e8]">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal
             className="grid md:grid-cols-2 gap-12 items-center"
@@ -177,10 +177,10 @@ export default function CoffeeShop() {
               />
             </div>
             <div>
-              <p className="text-[#5f9f91] uppercase tracking-[0.2em] text-sm mb-3">
+              <p className="text-[#c9a875] uppercase tracking-[0.2em] text-sm mb-3">
                 Détente & convivialité
               </p>
-              <h2 className="text-[#8EC5B8] text-3xl md:text-4xl mb-6">
+              <h2 className="text-[#d4a574] text-3xl md:text-4xl mb-6">
                 Jouez entre amis !
               </h2>
               <p className="text-[#6b6b6b] leading-relaxed mb-6">
@@ -194,15 +194,15 @@ export default function CoffeeShop() {
               </p>
               <ul className="space-y-3">
                 <li className="flex items-center gap-3 text-[#3d3d3d]">
-                  <span className="w-2 h-2 bg-[#8EC5B8] rounded-full"></span>
+                  <span className="w-2 h-2 bg-[#d4a574] rounded-full"></span>
                   Jeux disponibles gratuitement
                 </li>
                 <li className="flex items-center gap-3 text-[#3d3d3d]">
-                  <span className="w-2 h-2 bg-[#8EC5B8] rounded-full"></span>
+                  <span className="w-2 h-2 bg-[#d4a574] rounded-full"></span>
                   Pour tous les âges
                 </li>
                 <li className="flex items-center gap-3 text-[#3d3d3d]">
-                  <span className="w-2 h-2 bg-[#8EC5B8] rounded-full"></span>
+                  <span className="w-2 h-2 bg-[#d4a574] rounded-full"></span>
                   Ambiance chaleureuse garantie
                 </li>
               </ul>

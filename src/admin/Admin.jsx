@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import WorkshopForm from "./WorkshopForm";
 import MenuEditor from "./MenuEditor";
+import ReviewEditor from "./ReviewEditor";
 import { DEFAULT_MENU, DEFAULT_BRUNCH } from "../data/defaults";
 
 function HoursEditor({ hours, setHours }) {
@@ -63,6 +64,10 @@ export default function Admin() {
   const [brunch, setBrunch] = useState(() => {
     const savedBrunch = localStorage.getItem("restaurantBrunch");
     return savedBrunch ? JSON.parse(savedBrunch) : DEFAULT_BRUNCH;
+  });
+  const [avis, setAvis] = useState(() => {
+    const savedAvis = localStorage.getItem("avis");
+    return savedAvis ? JSON.parse(savedAvis) : [];
   });
   const [activeTab, setActiveTab] = useState("ateliers");
 
@@ -177,6 +182,16 @@ export default function Admin() {
           >
             🕐 Horaires
           </button>
+          <button
+            onClick={() => setActiveTab("avis")}
+            className={`pb-3 px-4 text-sm font-medium transition ${
+              activeTab === "avis"
+                ? "text-[#BD6525] border-b-2 border-[#BD6525]"
+                : "text-[#9caa8e] hover:text-[#BD6525]"
+            }`}
+          >
+            ⭐ Avis clients
+          </button>
         </div>
 
         {/* Contenu des onglets */}
@@ -242,6 +257,8 @@ export default function Admin() {
             <HoursEditor hours={hours} setHours={setHours} />
           </div>
         )}
+
+        {activeTab === "avis" && <ReviewEditor avis={avis} setAvis={setAvis} />}
       </main>
     </div>
   );

@@ -3,7 +3,7 @@ import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import { PhoneIcon } from "../components/Icons";
 
-const DEFAULT_RESERVATION_DISPLAY = "02 40 00 00 00";
+const DEFAULT_RESERVATION_DISPLAY = "09 84 67 40 99";
 
 function formatDateFr(value) {
   if (!value) return "Date à confirmer";
@@ -18,9 +18,9 @@ function formatDateFr(value) {
 }
 
 function normalizePhoneForTel(value) {
-  if (!value) return "+33240000000";
+  if (!value) return "+33984674099";
   const cleaned = value.replace(/[^\d+]/g, "");
-  return cleaned || "+33240000000";
+  return cleaned || "+33984674099";
 }
 
 function getDateKey(value) {
@@ -157,10 +157,10 @@ export default function Workshops() {
       {/* Hero avec image */}
       <section className="relative h-[56vh] min-h-[460px] overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1544531585-9847b68c8c86?w=1600&q=80"
+          src="atelier.png"
           alt="Ateliers créatifs"
           loading="lazy"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover object-[50%_28%] scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/35 to-transparent"></div>
         <div className="absolute inset-0 flex items-end pb-16">
@@ -214,13 +214,6 @@ export default function Workshops() {
               <p className="text-[#9caa8e] mb-6">
                 Revenez bientôt pour découvrir nos prochains ateliers !
               </p>
-              <a
-                href={`tel:${normalizePhoneForTel(DEFAULT_RESERVATION_DISPLAY)}`}
-                className="inline-flex items-center gap-2 text-sm text-[#8c690f] font-semibold underline underline-offset-4 decoration-[#cd9a18]/70"
-              >
-                <PhoneIcon className="w-4 h-4" />
-                Réservation : {DEFAULT_RESERVATION_DISPLAY}
-              </a>
             </div>
           ) : (
             <div className="grid lg:grid-cols-[1.4fr_1fr] gap-8 items-start">

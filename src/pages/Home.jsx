@@ -31,9 +31,7 @@ export default function Home() {
               </p>
               <h1 className="text-[#BD6525] mb-6">Mow & My</h1>
               <p className="text-lg text-[#6b6b6b] leading-relaxed mb-8">
-                Un lieu unique à Pornic où se mêlent gastronomie, créativité et
-                convivialité. Restaurant, coffee shop, coworking et ateliers
-                créatifs — tout sous le même toit, en ville haute.
+                un lieu où se mêlent originalité, créativité et convivialité.
               </p>
             </div>
 
@@ -57,10 +55,6 @@ export default function Home() {
               Découvrez
             </p>
             <h2 className="text-[#BD6525] mb-4">Nos espaces</h2>
-            <p className="text-[#6b6b6b] max-w-2xl mx-auto">
-              Un lieu unique qui réunit gastronomie, détente et créativité sous
-              le même toit
-            </p>
           </ScrollReveal>
 
           {/* Restaurant */}
@@ -70,7 +64,7 @@ export default function Home() {
           >
             <div className="relative h-80 md:h-96 rounded-3xl overflow-hidden group">
               <img
-                src="restaurant.jpg"
+                src="restaurant_2.jpeg"
                 alt="Restaurant"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 loading="lazy"
@@ -104,7 +98,7 @@ export default function Home() {
           >
             <div className="md:order-2 relative h-80 md:h-96 rounded-3xl overflow-hidden group">
               <img
-                src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80"
+                src="coffee-shop.jpeg"
                 alt="Coffee Shop cosy"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 loading="lazy"
@@ -112,19 +106,18 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
             </div>
             <div className="md:order-1 md:pr-8">
-              <span className="inline-block px-4 py-1 bg-[#8EC5B8]/20 text-[#8EC5B8] rounded-full text-sm font-medium mb-4">
+              <span className="inline-block px-4 py-1 bg-[#d4a574]/20 text-[#d4a574] rounded-full text-sm font-medium mb-4">
                 Espace cosy
               </span>
-              <h3 className="text-[#8EC5B8] text-3xl mb-4">Coffee Shop</h3>
+              <h3 className="text-[#d4a574] text-3xl mb-4">Coffee Shop</h3>
               <p className="text-[#6b6b6b] leading-relaxed mb-6">
-                Un espace chaleureux et intimiste où prendre le temps de
-                savourer un café d'exception ou un thé délicat. Fauteuils
-                confortables, lumière douce et pâtisseries maison vous
+                Un espace chaleureux et intimiste pour prendre le temps.
+                Boissons chaudes, pâtisseries maison et jeux de société vous
                 attendent.
               </p>
               <Link
                 to="/coffee"
-                className="group inline-flex items-center gap-2 text-[#8EC5B8] font-medium transition-all duration-300 hover:text-[#6ea99c]"
+                className="group inline-flex items-center gap-2 text-[#d4a574] font-medium transition-all duration-300 hover:text-[#bb8f61]"
               >
                 Découvrir le Coffee Shop
                 <ArrowIcon className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1.5" />
@@ -139,7 +132,7 @@ export default function Home() {
           >
             <div className="relative h-80 md:h-96 rounded-3xl overflow-hidden group">
               <img
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80"
+                src="coworking.jpg"
                 alt="Espace Coworking"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 loading="lazy"
@@ -147,18 +140,23 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
             </div>
             <div className="md:pl-8">
-              <span className="inline-block px-4 py-1 bg-[#9caa8e]/20 text-[#7a8c6c] rounded-full text-sm font-medium mb-4">
+              <span className="inline-block px-4 py-1 bg-[#bb6f58]/20 text-[#bb6f58] rounded-full text-sm font-medium mb-4">
                 Travail & créativité
               </span>
-              <h3 className="text-[#9caa8e] text-3xl mb-4">Coworking</h3>
-              <p className="text-[#6b6b6b] leading-relaxed mb-6">
+              <h3 className="text-[#bb6f58] text-3xl mb-4">Coworking</h3>
+              <p className="text-[#6b6b6b] leading-relaxed mb-3">
                 Un espace calme et inspirant pour travailler, créer ou
-                simplement vous poser. WiFi haut débit, café à volonté et une
-                ambiance propice à la concentration.
+                simplement vous poser.
               </p>
+              <ul className="list-disc pl-5 text-[#6b6b6b] space-y-1 mb-6">
+                <li>WiFi haut débit</li>
+                <li>Boisson chaude incluse</li>
+                <li>Viennoiserie offerte le matin</li>
+                <li>Ambiance propice à la concentration</li>
+              </ul>
               <Link
                 to="/coworking"
-                className="group inline-flex items-center gap-2 text-[#9caa8e] font-medium transition-all duration-300 hover:text-[#7a8c6c]"
+                className="group inline-flex items-center gap-2 text-[#bb6f58] font-medium transition-all duration-300 hover:text-[#9f5f4b]"
               >
                 Découvrir l'espace
                 <ArrowIcon className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1.5" />
@@ -173,7 +171,7 @@ export default function Home() {
           >
             <div className="md:order-2 relative h-80 md:h-96 rounded-3xl overflow-hidden group">
               <img
-                src="https://images.unsplash.com/photo-1544531585-9847b68c8c86?w=800&q=80"
+                src="atelier.png"
                 alt="Ateliers créatifs"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 loading="lazy"
@@ -242,7 +240,7 @@ export default function Home() {
                   <FacebookIcon className="w-8 h-8" />
                 </a>
               </div>
-              <a href="tel:+33240000000" className="btn-reserve mb-10">
+              <a href="tel:+33984674099" className="btn-reserve mb-10">
                 <PhoneIcon className="w-5 h-5" />
                 Réserver
               </a>
@@ -281,8 +279,8 @@ export default function Home() {
               className="rounded-2xl overflow-hidden shadow-lg h-[400px]"
             >
               <iframe
-                title="Carte Mow & My — Pornic"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2718.5!2d-2.1025!3d47.1167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4805e4d5f4e9c9c7%3A0x0!2sPassage+du+Rocher%2C+44210+Pornic!5e0!3m2!1sfr!2sfr!4v1700000000000"
+                title="Carte mowandmy"
+                src="https://maps.google.com/maps?q=mowandmy%2C%20Passage%20du%20Rocher%2C%2044210%20Pornic&t=&z=17&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

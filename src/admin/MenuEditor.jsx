@@ -2,7 +2,12 @@ import { useState } from "react";
 
 export default function MenuEditor({ menu, setMenu, brunch, setBrunch }) {
   const [newItem, setNewItem] = useState({ name: "", desc: "", price: "" });
-  const [newBrunch, setNewBrunch] = useState({ name: "", desc: "", price: "" });
+  const [newBrunch, setNewBrunch] = useState({
+    name: "",
+    desc: "",
+    price: "",
+    category: "sale",
+  });
   const [editingId, setEditingId] = useState(null);
   const [editingBrunchId, setEditingBrunchId] = useState(null);
 
@@ -37,11 +42,15 @@ export default function MenuEditor({ menu, setMenu, brunch, setBrunch }) {
   function addBrunchItem(e) {
     e.preventDefault();
     if (!newBrunch.name) return;
-    const item = { ...newBrunch, id: Date.now() };
+    const item = {
+      ...newBrunch,
+      category: newBrunch.category || "sale",
+      id: Date.now(),
+    };
     const next = [...brunch, item];
     setBrunch(next);
     localStorage.setItem("restaurantBrunch", JSON.stringify(next));
-    setNewBrunch({ name: "", desc: "", price: "" });
+    setNewBrunch({ name: "", desc: "", price: "", category: "sale" });
   }
 
   // Supprimer un brunch
@@ -189,7 +198,7 @@ export default function MenuEditor({ menu, setMenu, brunch, setBrunch }) {
           <p className="text-sm font-medium text-[#3d3d3d] mb-3">
             Ajouter un plat brunch
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-3">
             <input
               value={newBrunch.name}
               onChange={(e) =>
@@ -214,6 +223,16 @@ export default function MenuEditor({ menu, setMenu, brunch, setBrunch }) {
               placeholder="Prix (optionnel)"
               className="px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-[#9caa8e]"
             />
+            <select
+              value={newBrunch.category || "sale"}
+              onChange={(e) =>
+                setNewBrunch({ ...newBrunch, category: e.target.value })
+              }
+              className="px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-[#9caa8e] bg-white"
+            >
+              <option value="sale">Salé</option>
+              <option value="sucre">Sucré</option>
+            </select>
             <button
               type="submit"
               className="px-4 py-2 bg-[#9caa8e] text-white text-sm rounded-lg hover:bg-[#8a9a7c] transition"
@@ -234,7 +253,7 @@ export default function MenuEditor({ menu, setMenu, brunch, setBrunch }) {
                 className="border border-gray-100 rounded-xl p-4 bg-[#faf8f4]"
               >
                 {editingBrunchId === item.id ? (
-                  <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
+                  <div className="grid grid-cols-1 md:grid-cols-5 gap-3">
                     <input
                       value={item.name}
                       onChange={(e) =>
@@ -256,6 +275,16 @@ export default function MenuEditor({ menu, setMenu, brunch, setBrunch }) {
                       }
                       className="px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-[#9caa8e]"
                     />
+                    <select
+                      value={item.category || "sale"}
+                      onChange={(e) =>
+                        updateBrunchItem(item.id, "category", e.target.value)
+                      }
+                      className="px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-[#9caa8e] bg-white"
+                    >
+                      <option value="sale">Salé</option>
+                      <option value="sucre">Sucré</option>
+                    </select>
                     <button
                       onClick={() => setEditingBrunchId(null)}
                       className="px-4 py-2 bg-[#BD6525] text-white text-sm rounded-lg hover:bg-[#a85820] transition"
@@ -269,6 +298,9 @@ export default function MenuEditor({ menu, setMenu, brunch, setBrunch }) {
                       <strong className="text-[#3d3d3d]">{item.name}</strong>
                       <span className="text-[#BD6525] font-semibold ml-3">
                         {item.price}
+                      </span>
+                      <span className="text-xs ml-2 px-2 py-1 rounded-full bg-[#ececd9] text-[#73754f]">
+                        {item.category === "sucre" ? "Sucré" : "Salé"}
                       </span>
                       <p className="text-[#6b6b6b] text-sm mt-1">{item.desc}</p>
                     </div>
