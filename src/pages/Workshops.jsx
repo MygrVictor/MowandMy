@@ -172,8 +172,8 @@ export default function Workshops() {
               Ateliers Mow & My
             </h1>
             <p className="text-lg text-white/90 leading-relaxed max-w-2xl mx-auto">
-              Découvrez nos ateliers créatifs : cuisine, bien-être et moments de
-              partage dans une ambiance chaleureuse.
+              Découvrez nos ateliers créatifs : bien-être et moments de partage
+              dans une ambiance chaleureuse.
             </p>
           </div>
         </div>
