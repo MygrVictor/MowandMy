@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { PhoneIcon } from "./Icons";
+import ReservationCTA from "./ReservationCTA";
 
 const NAV_LINKS = [
   { to: "/home", label: "Accueil" },
@@ -67,14 +67,10 @@ export default function Nav() {
           </div>
 
           {/* CTA Desktop */}
-          <a
-            href="tel:+33984674099"
+          <ReservationCTA
             style={{ color: navColor }}
             className="hidden md:inline-flex ml-auto btn-reserve"
-          >
-            <PhoneIcon className="w-4 h-4" />
-            Réserver
-          </a>
+          />
 
           {/* Mobile toggle */}
           <button
@@ -124,14 +120,10 @@ export default function Nav() {
                 {label}
               </Link>
             ))}
-            <a
-              href="tel:+33984674099"
+            <ReservationCTA
               style={{ color: navColor }}
               className="mt-2 btn-reserve"
-            >
-              <PhoneIcon className="w-4 h-4" />
-              Réserver
-            </a>
+            />
           </div>
         </div>
       </div>

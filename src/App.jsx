@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
+import PageEffects from "./components/PageEffects";
 
 const Landing = lazy(() => import("./pages/Landing"));
 const Home = lazy(() => import("./pages/Home"));
@@ -23,6 +24,7 @@ function Loader() {
 function App() {
   return (
     <BrowserRouter>
+      <PageEffects />
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Landing />} />

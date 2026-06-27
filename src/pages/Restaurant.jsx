@@ -2,7 +2,7 @@ import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import ReviewCarousel from "../components/ReviewCarousel";
 import { useState } from "react";
-import { PhoneIcon } from "../components/Icons";
+import ReservationCTA from "../components/ReservationCTA";
 import { DEFAULT_MENU, DEFAULT_BRUNCH } from "../data/defaults";
 import ScrollReveal from "../components/ScrollReveal";
 
@@ -318,10 +318,7 @@ export default function Restaurant() {
           <div className="text-center">
             <h3 className="text-white text-2xl mb-4">Réserver une table</h3>
             <p className="text-white/80 mb-6">Appelez-nous pour réserver !</p>
-            <a href="tel:+33984674099" className="btn-reserve">
-              <PhoneIcon className="w-5 h-5" />
-              09 84 67 40 99
-            </a>
+            <ReservationCTA className="btn-reserve" />
           </div>
         </ScrollReveal>
       </section>

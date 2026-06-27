@@ -4,12 +4,8 @@ import ReviewCarousel from "../components/ReviewCarousel";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import ScrollReveal from "../components/ScrollReveal";
-import {
-  InstagramIcon,
-  FacebookIcon,
-  PhoneIcon,
-  ArrowIcon,
-} from "../components/Icons";
+import ReservationCTA from "../components/ReservationCTA";
+import { InstagramIcon, FacebookIcon, ArrowIcon } from "../components/Icons";
 
 export default function Home() {
   const [hours] = useState(() => {
@@ -150,8 +146,7 @@ export default function Home() {
               </p>
               <ul className="list-disc pl-5 text-[#6b6b6b] space-y-1 mb-6">
                 <li>WiFi haut débit</li>
-                <li>Boisson chaude incluse</li>
-                <li>Viennoiserie offerte le matin</li>
+                <li> une Boisson chaude incluse</li>
                 <li>Ambiance propice à la concentration</li>
               </ul>
               <Link
@@ -240,10 +235,7 @@ export default function Home() {
                   <FacebookIcon className="w-8 h-8" />
                 </a>
               </div>
-              <a href="tel:+33984674099" className="btn-reserve mb-10">
-                <PhoneIcon className="w-5 h-5" />
-                Réserver
-              </a>
+              <ReservationCTA className="btn-reserve mb-10" />
 
               {hours && Object.keys(hours).length > 0 && (
                 <div className="mt-2">
